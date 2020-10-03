@@ -1,0 +1,17 @@
+
+.login{
+  float: right;
+  margin-right:3px ;
+}
+.form-group{
+  margin: 2px;
+}
+button{
+  margin: 2px;
+}
+.form-control.ng-touched.ng-invalid{
+  border: 2px solid red;
+}
+.form-control.ng-valid{
+  border: 3px solid green;
+}

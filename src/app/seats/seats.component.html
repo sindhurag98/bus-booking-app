@@ -1,0 +1,123 @@
+<div class="p">
+<steps></steps>
+<div class="container">
+  <div class="show-bus-details">
+      <div class="seat-layout">
+          <div class="seat"
+              [ngClass]="{'booked-seat':seatArray[i].booked, 'clicked-seat': seatArray[i].clicked}"
+              (click)="onSeatSelect(i+1, $event)" *ngFor="let seat of seatArray;let i=index">
+          </div>
+      </div>
+      <div class="user-info">
+          <h4 style="text-align:center;">Booking Summary</h4>
+
+          <div class="row">
+              <div class="col-sm-4">
+                  <p>From : &nbsp;</p>
+              </div>
+              <div class="col-sm-8" *ngFor="let j of bus" style="margin-left: -100px;">
+                &nbsp;&nbsp; {{j.from}}
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-4">
+                  <p>To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;</p>
+              </div>
+              <div class="col-sm-8" *ngFor="let j of bus" style="margin-left: -100px;">
+                &nbsp;&nbsp;{{j.to}}
+              </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-sm-4">
+                <p>time  and date : </p>
+            </div>
+            <div class="col-sm-8" *ngFor="let j of bus" style="margin-left: -20px;">
+              {{j.departure}}&nbsp; {{j.traveldate}}
+            </div>
+          </div>
+
+
+
+          <form [formGroup]="seatForm" (submit)="onConfirm()">
+              <div formArrayName="seatDetails" class="seat-user-info"
+                  *ngFor="let seatNo of selectedSeatNos;let i=index">
+                  <div class="row" #seatno>
+                      <div class="col-sm-4">
+                          <p class="mb-1">Seat No : </p>
+                      </div>
+                      <div class="col-sm-8">
+                          <p class="mb-1" >{{ seatNo }}</p>
+                      </div>
+                  </div>
+                  <div class="form-row" [formGroupName]="i">
+                      <div class="col-sm-4 mb-1">
+                          <input class="form-control form-control-sm" type="text" id="name" placeholder="Name"
+                              formControlName="name" #uname>
+                      </div>
+                      <div class="col-sm-3 mb-1">
+                          <input class="form-control form-control-sm ml-1" type="number" min="1" max="100" id="age"
+                              formControlName="age" placeholder="Age" #uage>
+                      </div>
+                      <div class="col-sm-5 mb-1">
+                          <label class="form-check-label mr-2"><input class="" type="radio" [id]="'male'+i"
+                                  formControlName="gender" value="male" #ugender>Male</label>
+                          <label class="form-check-label" [for]="'gender'+i"><input class="" type="radio"
+                                  [id]="'female'+i" formControlName="gender" value="female" #ugender>Female</label>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="show-on-seat" *ngIf="showSeat">
+                  <div class="row">
+                      <div class="col-sm-4">
+                          <p>Total Seats : </p>
+                      </div>
+                      <div class="col-sm-8">
+                          {{ selectedSeatNos.length }}
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-4">
+                          <p>Fare : </p>
+                      </div>
+                      <div class="col-sm-8" *ngFor="let j of bus" >
+                          {{ j.fare*selectedSeatNos.length}}/-
+                      </div>
+                  </div>
+
+
+                  <div class="row">
+                      <div class="col-sm-4">
+                          <p>Service Tax : </p>
+                      </div>
+                      <div class="col-sm-8" >
+                          180/-
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-4">
+                          <p>Total Charges : </p>
+                      </div>
+                      <div class="col-sm-8" *ngFor="let j of bus">
+                          {{ j.fare*selectedSeatNos.length + 180 }}/-
+                      </div>
+                  </div>
+                </div>
+
+
+              <button type="submit" [disabled]="seatForm.invalid || selectedSeatNos.length<=0"
+                  class="btn-sm btn btn-primary" (click)="pay()">Confirm</button>
+          </form>
+      </div>
+
+  </div>
+  <div class="no-bus" *ngIf="noBusDetails">
+      <div class="alert alert-warning">
+          <p>Go Back and Select Your Bus Again</p>
+      </div>
+  </div>
+
+</div>
+</div>

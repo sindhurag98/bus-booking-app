@@ -1,0 +1,33 @@
+.signup
+{
+  position: absolute;
+  top: 20%;
+  left:65%;
+  width: 30%;
+  height: 78% auto;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  background: rgba(255, 255,255, .2);
+  box-shadow: 0 5px 15px rgba(0,0,0,.5);
+  padding: 15px;
+  color: white;
+ background-attachment: local;
+
+}
+h4{
+text-align: center;
+}
+.inline{
+  display: inline;
+}
+.radio{
+  display: inline;
+  margin: 2px;
+  padding: 2px;
+}
+.form-control.ng-touched.ng-invalid{
+  border: 2px solid red;
+}
+.form-control.ng-valid{
+  border: 3px solid green;
+}

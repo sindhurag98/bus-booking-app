@@ -1,0 +1,95 @@
+<div class="p">
+<steps></steps>
+<form class="form-inline plan" #searc="ngForm" (ngSubmit)="plan(searc)" >
+  <div class="container">
+  <div class="row">
+    <div class="col-3">
+       <div class="form-group">
+         <strong style="margin-left: 15px;">select origin city:</strong>
+       </div>
+    </div>
+
+    <div class="col-3">
+       <div class="form-group">
+         <strong style="margin-left: 8px;">select destination city:</strong>
+       </div>
+    </div>
+    <div class="col-6">
+       <div class="form-group">
+         <strong style="margin-left: 2px;">select travel date:</strong>
+       </div>
+    </div>
+  </div>
+</div>
+  <div class="form-group">
+   <select
+   required
+   class="form-control"
+   [(ngModel)]="model.from"
+   #from="ngModel"
+   name="from"
+    id="from"
+     >
+     <option value="" selected disabled hidden >select origin city</option>
+    <option value="hyderabad">hyderabad</option>
+    <option value="chennai">chennai</option>
+    <option value="pune">pune</option>
+    <option value="mumbai">mumbai</option>
+   </select>
+   <small *ngIf="from.touched && !from.valid" class="text-danger">please select origin city</small>
+  </div>
+  <div class="from-group">
+   <select
+    required
+    class="form-control"
+    [(ngModel)]="model.to"
+    #to="ngModel"
+    name="to">
+    <option value="" selected  disabled hidden>select destination city</option>
+    <option value="hyderabad">hyderabad</option>
+    <option value="chennai">chennai</option>
+    <option value="pune">pune</option>
+    <option value="mumbai">mumbai</option>
+   </select>
+    <small *ngIf="to.touched && !to.valid" class="text-danger">
+     please select destination city
+    </small>
+  </div>
+  <div class="form-group">
+   <input
+    required
+    class="form-control"
+    type="date"
+    [(ngModel)]="model.traveldate"
+    #traveldate ="ngModel"
+   name="traveldate"
+    id="traveldate">
+   <small *ngIf="traveldate.touched && !traveldate.valid" class="text-danger">please select travel date</small>
+  </div>
+ <button class="btn btn-primary" [disabled]="!searc.valid" type="submit">search</button>
+
+</form>
+</div>
+
+<div>
+
+  <table  class="table" *ngIf="searc.valid">
+    <tr>
+      <th>travels name</th>
+      <th>seat avilability</th>
+      <th>Departure</th>
+      <th>Fare</th>
+      <th>view seats</th>
+
+
+    </tr>
+   <tr *ngFor="let result of results" >
+      <td><strong>{{result.travelsname}}</strong></td>
+      <td> <strong>{{result.availability}}</strong></td>
+      <td><strong>{{result.departure}}</strong></td>
+      <td><strong>{{result.fare}}/-</strong></td>
+      <td><button style="margin-top: -6px ; margin-bottom: -3px;" class="btn btn-primary btn-sm" (click)="viewSeats()">view Seats</button></td>
+    </tr>
+
+  </table>
+</div>

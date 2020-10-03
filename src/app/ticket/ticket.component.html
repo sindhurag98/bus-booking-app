@@ -1,0 +1,37 @@
+<div class="p">
+  <steps></steps>
+
+  <h4>Dear {{name}}, your ticket has been booked successfully!! &nbsp;<small>
+
+<button (click)="downloadPDF()" class="btn btn-info small" style="float: right;margin-top: -5px;">download ticket</button>
+  </small>
+</h4>
+ <div id="ticket">
+  <div id="t">
+  <div>
+  <strong><h5 style="margin-left: 2px;margin-bottom:5px ;color: red;background-color: rgba(255, 255,255, .5); border-radius: 0.3rem;padding: 5px;" *ngFor="let j of busdetails">{{j.travelsname}}</h5></strong>
+  <h6><p *ngFor="let j of busdetails">{{j.traveldate}} </p></h6>
+ <h6 style="margin-top:-5px" *ngFor="let j of busdetails">{{j.departure}}</h6>
+</div>
+<hr style="border-top: 1px solid black;">
+  <div>
+    <div >
+     <!-- <p >name:</p>-->
+
+    <div  class="row" style="display: inline;">
+      <h5 style="margin-right: -50px;width: 100px;margin-top: -15px; background-color: rgba(255, 255,255, .5); border-radius: 0.3rem;padding: 5px;" *ngFor="let j of busdetails"><strong>{{j.from}}</strong></h5>
+      <hr style=" margin-left: 120px;margin-top:-19px;border-top: 2px dashed black; width: 100px;">
+      <h5 style="margin-left: 250px;width: 150px;margin-top: -40px; border-radius: 0.3rem; background-color: rgba(255, 255,255, .5);padding:5px; padding-left: 25px;"*ngFor="let j of busdetails"><strong>{{j.to}}</strong></h5>
+    </div>
+    <div >
+      <h5 *ngFor="let j of sdetails">seat number &nbsp;:&nbsp;<strong>{{j.seatNo}}</strong>&nbsp;&nbsp;-&nbsp;&nbsp;{{j.name}} &nbsp; &nbsp; {{j.gender}} &nbsp;{{j.age}} </h5>
+      <hr style="border-top: 2px solid black;">
+      <p id="fare" >totalfare &nbsp;: ₹{{totalf}}.00/- </p>
+      <hr style="border-top: 2px solid black; margin-top:-5px ;margin-bottom: 0px;">
+
+
+    </div>
+    </div>
+
+</div>
+</div>

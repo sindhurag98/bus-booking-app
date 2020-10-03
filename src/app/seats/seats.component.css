@@ -1,0 +1,71 @@
+.p{
+  position: absolute;
+  margin: 0px auto;
+  top:20%;
+  left:20%;
+  width: 70%;
+  height: 76% auto;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  background: rgba(255, 255,255, .2);
+  box-shadow: 0 5px 15px rgba(0,0,0,.5);
+  padding: 15px;
+  padding-bottom: 2px;
+  color: white;
+  font-weight: bolder;
+
+}
+.container {
+  padding:15px;
+}
+.show-bus-details {
+
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  color: black;
+}
+.seat-layout {
+  display: flex;
+  width: 30%;
+  height: 80%;
+  margin-right: 5%;
+  align-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255,0.6);
+
+}
+.user-info {
+ background-attachment: local;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  width: 50%;
+  padding: 6px;
+  color: black;
+
+}
+.seat-layout {
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 60vh;
+  width: 15vw;
+
+}
+.seat {
+  border:2px solid black;
+  cursor: pointer;
+  text-align: center;
+  width: 8%;
+  height: 7%;
+  margin: 5px;
+  background-color: lightgray;
+}
+.booked-seat {
+  color: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  background-color: rgba(255, 0, 0, 0.6);
+}
+.clicked-seat {
+  background-color:rgba(0, 255,0, 0.6);
+}
+

@@ -1,0 +1,21 @@
+
+p{
+  font-size: 30px;
+  font-weight: bolder;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+img{
+  height: 10vh;
+  width: 8vw;
+}
+.logo{
+ background-color: black;
+  color: white;
+  font-weight: bolder;
+  font-size: 30px;
+  margin-bottom: 5px;
+
+}
+
+

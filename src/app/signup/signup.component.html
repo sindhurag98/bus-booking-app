@@ -1,0 +1,113 @@
+
+<form class="signup" #sign="ngForm" (ngSubmit)="onsubmit(sign)">
+
+  <h4>Register</h4>
+<div class="form">
+  <div class="form-group">
+      <label for="" ></label>
+      <input
+
+          required
+          [(ngModel)]="registerUserData.name"
+          #name="ngModel"
+          name="name"
+          type="text"
+          class = "form-control"
+          placeholder="name">
+        <div *ngIf="name.invalid && name.touched" class="text-danger">
+           <small *ngIf="name.errors.required  ">please enter your name</small>
+        </div>
+  </div>
+  <div class="form-group">
+      <label for="email"></label>
+      <input
+          required
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          [(ngModel)]="registerUserData.email"
+          #email="ngModel"
+          name="email"
+          type="email"
+          class="form-control"
+          placeholder="email">
+          <div *ngIf="email.invalid && email.touched" class="text-danger">
+            <small *ngIf="email.errors.required ">please enter your email</small>
+            <small *ngIf="email.errors.pattern ">please enter valid email</small>
+          </div>
+  </div>
+  <div class="form-group">
+    <label for="phonenumber" ></label>
+    <input
+          required
+          minlength="10"
+          maxlength="10"
+          pattern="^\d{10}$"
+          [(ngModel)]="registerUserData.phonenumber"
+          name="phonenumber"
+          type="text"
+          #phonenumber="ngModel"
+          class="form-control"
+          placeholder="phone number">
+          <div *ngIf="phonenumber.touched && !phonenumber.valid" class="text-danger">
+            <small *ngIf="phonenumber.errors.required">please enter your phone number</small>
+
+            <small *ngIf=" phonenumber.errors.pattern">please enter valid phone number</small>
+          </div>
+  </div>
+  <div class="form-group">
+    <label for="password" ></label>
+    <input
+          required
+          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"
+          minlength="8"
+          maxlength="10"
+          [(ngModel)]="registerUserData.password"
+          name="password"
+          #password="ngModel"
+          type="text"
+          class="form-control"
+          placeholder="create password">
+          <div *ngIf="password.touched && !password.valid" class="text-danger">
+            <small *ngIf="password.errors.required">please enter your password</small>
+            <small *ngIf="password.errors.pattern ">password doesnt meet requirements</small>
+          </div>
+  </div>
+  <div class="form-group">
+  <strong>   <label for="dob" >date of birth</label></strong>
+    <input
+          required
+          [(ngModel)]="registerUserData.dob"
+          name="dob"
+          type="date"
+          #dob="ngModel"
+          class="form-control"
+          >
+          <div *ngIf="dob.touched && !dob.valid" class="text-danger">
+            <small *ngIf="dob.errors.required"> please select your date of birth</small>
+          </div>
+  </div>
+  <div class="inline">
+  <div class="radio">
+    <input
+    [(ngModel)]="registerUserData.gender"
+          name="gender"
+          type="radio"
+          value="male"
+          >
+        <strong> <label for="male">male</label></strong>
+  </div>
+</div>
+  <div class=" radio">
+    <input
+    [(ngModel)]="registerUserData.gender"
+          name="gender"
+          type="radio"
+          value="female"
+          >
+        <strong> <label for="female">female</label></strong>
+  </div>
+
+
+<button (click)="registerUser()" class="btn btn-primary" [disabled]="!sign.valid" type="submit">Sign Up</button>
+</div>
+</form>
+

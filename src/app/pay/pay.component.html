@@ -1,0 +1,137 @@
+<div class="p">
+  <steps></steps>
+  <div class="header bg-primary">total fare: ₹{{totalf}}/- </div>
+  <form class="pay" #pay="ngForm" (ngSubmit)="onsubmit(pay)">
+    <div class="form">
+      <div class="inline">
+        <label class="tag" for="cardtype">Card Type: </label>
+        <div class="radio">
+          <input
+                ngModel
+                name="cardtype"
+                type="radio"
+                value="visa"
+                >
+                <label>Visa</label>
+        </div>
+      </div>
+        <div class="radio">
+          <input
+                ngModel
+                name="cardtype"
+                type="radio"
+                value="mastercard"
+                >
+                <label >Mastercard</label>
+    </div>
+    <div class="form-group">
+      <label for="name"></label>
+      <input
+        style="width: 400px;margin-top:-13px"
+          required
+          ngModel
+          #name="ngModel"
+          name="name"
+          type="text"
+          class = "form-control"
+          placeholder="name on card">
+        <div *ngIf="name.invalid && name.touched" class="text-danger">
+           <small *ngIf="name.errors.required  ">please enter your name</small>
+        </div>
+  </div>
+  <div class="form-group">
+    <label for="cardnumber" ></label>
+    <input
+      style = "width: 400px;margin-top: -13px;"
+        required
+        minlength="16"
+        maxlength="16"
+        pattern="^\d{16}$"
+        ngModel
+        #cardnumber="ngModel"
+        name="cardnumber"
+        type="number"
+        class = "form-control"
+        placeholder="16-digit card number">
+        <div *ngIf="cardnumber.touched && !cardnumber.valid" class="text-danger">
+          <small *ngIf="cardnumber.errors.required">please enter your card number</small>
+
+          <small *ngIf=" cardnumber.errors.pattern">please enter valid card number</small>
+        </div>
+</div>
+<div class="grp form-inline">
+<div class="form-group">
+  <label for="cvv" ></label>
+  <input
+  style="width: 100px; margin-right: 5px;"
+      required
+      minlength="3"
+      maxlength="3"
+      pattern="^\d{3}$"
+      ngModel
+      #cvv="ngModel"
+      name="cvv"
+      type="number"
+      class = "form-control"
+      placeholder="cvv">
+      <div *ngIf="cvv.touched && !cvv.valid" class="text-danger">
+        <small *ngIf="cvv.errors.required">please enter your cvv</small>
+        <small *ngIf=" cvv.errors.pattern">please enter valid cvv</small>
+      </div>
+</div>
+<div class="from-group">
+<select
+style="width: 100px;margin-right: 5px;"
+    required
+    class="form-control"
+    ngModel
+    #month="ngModel"
+    name=" month"
+    id="month"
+    type="month" >
+
+    <option value='' selected disabled hidden>month</option>
+    <option>jan</option>
+    <option>feb</option>
+    <option>mar</option>
+    <option>apr</option>
+    <option>may</option>
+    <option>jun</option>
+    <option>jul</option>
+    <option>aug</option>
+    <option>sept</option>
+    <option>oct</option>
+    <option>nov</option>
+    <option>dec</option>
+   </select>
+    <small *ngIf="month.touched && !month.valid" class="text-danger">
+    </small>
+  </div>
+  <div class="from-group">
+  <select
+  style="width: 100px;margin-right: 5px;"
+    required
+    class="form-control"
+    ngModel
+    #year="ngModel"
+    name="year"
+    id="year"
+    type="month" >
+    <option value='' selected disabled hidden>year</option>
+    <option>2024</option>
+    <option>2023</option>
+    <option>2022</option>
+    <option>2021</option>
+   </select>
+    <small *ngIf="year.touched && !year.valid" class="text-danger">
+    </small>
+  </div>
+</div>
+<div class="form-inline">
+    <button style="margin-right: 10px;" class="btn btn-success" [disabled]="!pay.valid" (click)="viewticket()" type="submit">pay now</button>
+    <button class="btn btn-danger" [disabled]="!pay.valid" (click)="cancel()" type="submit">cancel</button>
+  </div>
+  </div>
+
+  </form>
+</div>
